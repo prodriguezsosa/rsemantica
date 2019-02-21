@@ -1,0 +1,54 @@
+---
+title: "rsemantica vignette"
+author: "Pedro L. Rodríguez"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+# About `rsemantica`
+
+This vignette describes the usage of `rsemantica` for fitting models to semantic fluency data.
+
+Keep in mind `rsemantica` is still in development.
+
+### Installation
+
+The dev version of `rsemantica` on GitHub can be installed with:
+
+```{r gh-installation, eval = FALSE}
+# install.packages("devtools")
+# devtools::install_github("prodriguezsosa/rsemantica")
+```
+
+### Load the package
+
+```{r echo=TRUE}
+library(rsemantica)
+```
+
+# Example: Fitting a model to semantic fluency data from U.S. based MTurkers
+
+We will use semantic fluency data collected from 1056 MTurk subjects. As cues we selected words that are politically relevant: \texttt{welfare}, \texttt{government}, \texttt{American values}, \texttt{Republican} and \texttt{Democrat}. For each cue, subjects were required to respond with associated words without repetitions. We also collected a series of demographic and political attitudes questions, including party identification and ideology.
+
+```{r echo=TRUE}
+data("sft_mturk_us")
+```
+
+```{r echo=TRUE}
+# compile rstan model (need run only once per session) ----------------------------------------------------
+model = stan_model(file = paste(model_dir, model_name = "RW_gauss_wo_rep", ".stan", sep = ""))
+```
+
+
+

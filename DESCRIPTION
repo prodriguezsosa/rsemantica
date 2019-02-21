@@ -22,3 +22,6 @@ Imports:
     RColorBrewer (>= 1.1-2),
     tidyr (>= 0.8.1)
 RoxygenNote: 6.1.0
+Suggests: knitr,
+    rmarkdown
+VignetteBuilder: knitr
