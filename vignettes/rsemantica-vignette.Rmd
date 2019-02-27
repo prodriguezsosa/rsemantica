@@ -48,6 +48,7 @@ data("sft_mturk_us")
 ```{r echo=TRUE}
 # compile rstan model (need run only once per session) ----------------------------------------------------
 model = stan_model(file = paste(model_dir, model_name = "RW_gauss_wo_rep", ".stan", sep = ""))
+model = stan_model("RW_gauss_wo_rep.stan")
 ```
 
 
